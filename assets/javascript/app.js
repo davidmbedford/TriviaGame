@@ -15,3 +15,28 @@
 ////On the final screen, show the number of correct answers,
 ///////incorrect answers, and an option to restart the game
 ///////(without reloading the page).
+
+//This object contains all possibke answers... or it will
+var allQuestions = [
+  questionOne = {
+    qOne: "Is it a question!?";
+    aOne: "Yars";
+    aTwo: "Nar!";
+    aThree: "Maybe"
+  }
+
+  questionTwo = {
+    qOne: "Is a dog a duck?";
+    aOne: "Perhaps if not";
+    aTwo: "No, ducks dont have paws";
+    aThree: "Yes, dogs have bills";
+  }
+
+  questionThree = {
+    qOne: "Where is the money?";
+    aOne: "cmon, tony, i know you know where the money is";
+    aTwo: "listen, you got two minutes before I smash this large container of jello over your head, i aint kiddin tony!";
+    aThree: "No, dogs have bills";
+  }
+
+]
