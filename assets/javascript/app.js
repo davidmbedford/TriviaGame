@@ -21,7 +21,7 @@ window.onload = function() {
   $("#correctStat").text(correct);
   $("#wrongStat").text(wrong);
   $("#scoreStat").text(score);
-}
+};
 
 var correct = 0;
 var wrong = 0;
@@ -30,16 +30,20 @@ var score = "";
 var count = 0; //we will need this to track the number of questions so that when
               // count = total, we can trigger the endcard.
 
-var timerRunning = false; // we will need this to activsate the slideshow after we hit start
+var timerRunning = false; // we will need this to activate the slideshow after we hit start
 
 //This object contains all possible questions, answers... or, soon it will
+var imagePlacer = $("div#dogpic").append("<img" + " src='assets/images/BerneseMountainDog.jpg' " + "id='dogPic'" + "></img>");
+imagePlacer;
+
+
 var allQuestions = [
   questionOne = {
     aOne: "Labroder Retreiver",
     aTwo: "Poodle",
     aThree: "Portugese Water Dog",
-    aFour: "Daschund",
-    answer: "Portugese Water Dog"
+    aFour: "Bernese Mountain Dog",
+    answer: "Bernese Mountain Dog",
   },
 
   questionTwo = {
@@ -113,5 +117,22 @@ var allQuestions = [
     aFour: "DaschundPortu",
     answer: "Darv"
   },
-
 ];
+
+//Most important variables and their "assignment"-functions to html are above.
+//Below are the functions-etc that I need to have the questions/timers run
+
+console.log(allQuestions[0].aOne, allQuestions[1].aOne);
+
+
+$("#aOne").text(allQuestions[0].aOne);
+
+$("#aTwo").text(allQuestions[0].aTwo);
+
+$("#aThree").text(allQuestions[0].aThree);
+
+$("#aFour").text(allQuestions[0].aFour);
+
+$("#answer").text("Answer: " + allQuestions[0].answer);
+
+$("#dogPic").append(allQuestions[0].image);
