@@ -35,23 +35,83 @@ var timerRunning = false; // we will need this to activsate the slideshow after 
 //This object contains all possible questions, answers... or, soon it will
 var allQuestions = [
   questionOne = {
-    qOne: "Is it a question!?",
-    aOne: "Yars",
-    aTwo: "Nar!",
-    aThree: "Maybe"
+    aOne: "Labroder Retreiver",
+    aTwo: "Poodle",
+    aThree: "Portugese Water Dog",
+    aFour: "Daschund",
+    answer: "Portugese Water Dog"
   },
 
   questionTwo = {
-    qOne: "Is a dog a duck?",
-    aOne: "Perhaps if not",
-    aTwo: "No, ducks dont have paws",
-    aThree: "Yes, dogs have paws"
+    aOne: "Labroder Retreive",
+    aTwo: "Poodl",
+    aThree: "Portugese Water Do",
+    aFour: "Daschun",
+    answer: "Portugese Water Do"
   },
 
   questionThree = {
-    qOne: "Where is the money?",
-    aOne: "cmon, tony, i know you know where the money is",
-    aTwo: "listen, you got two minutes before I smash this large container of jello over your head, i aint kiddin tony!",
-    aThree: "No, dogs have bills"
-  }
+    aOne: "Labroder Retreiv",
+    aTwo: "Pood",
+    aThree: "Portugese Water D",
+    aFour: "Daschu",
+    answer: "Portugese Water D"
+  },
+
+  questionFour = {
+    aOne: "Labroder Retrei",
+    aTwo: "Poo",
+    aThree: "Portugese Water ",
+    aFour: "Dasch",
+    answer: "Portugese Water "
+  },
+
+  questionFive = {
+    aOne: "Labroder Retre",
+    aTwo: "Po",
+    aThree: "Portugese Water",
+    aFour: "Dasc",
+    answer: "Portugese Water"
+  },
+
+  questionSix = {
+    aOne: "Labroder Retr",
+    aTwo: "P",
+    aThree: "Portugese Wate",
+    aFour: "Das",
+    answer: "Portugese Wate"
+  },
+
+  questionSeven = {
+    aOne: "Laoder Retreir",
+    aTwo: "Poodle",
+    aThree: "rtugese Water g",
+    aFour: "Daschund",
+    answer: "rtugese Water Dog"
+  },
+
+  questionEight = {
+    aOne: "Labrodtreiver",
+    aTwo: "Poodle",
+    aThree: "Port Water Dog",
+    aFour: "Daschund",
+    answer: "Port Water Dog"
+  },
+
+  questionNine = {
+    aOne: "Labror",
+    aTwo: "Poodle",
+    aThree: "Por Dog",
+    aFour: "Daschund",
+    answer: "Por Dog"
+  },
+
+  questionTen = {
+    aOne: "Labroder Retreiver",
+    aTwo: "Poodle",
+    aThree: "Pougese Water Dog",
+    aFour: "DaschundPortu",
+    answer: "Darv"
+  },
+
 ];

@@ -16,14 +16,14 @@
     <h5 class="text-center">You have 30 seconds to guess which breed is which!</h5>
   </div>
 
-  <div class="container">
+  <div class="container" id="containerCSS">
 
     <div class="row">
 
-      <div class="col-lg-2">
+      <div class="col-lg-2" >
         <div class="card">
           <h3 class="card-header">Stats</h3>
-            <div class="card-body">
+            <div class="card-body" id="statBody">
               <p>Correct: <span id="correctStat"></span></p>
               <p>Wrong: <span id="wrongStat"></span></p>
               <p>Final Score: <span id="scoreStat"></span></p>
@@ -32,14 +32,15 @@
         </div>
 
       <div class="col-lg-6">
-        <div class="card">
-          <h3 class="card-header">Question 1</h3>
+        <div class="card" id="quesBody">
+          <h3 class="card-header">What's the name of this breed?</h3>
             <div class="card-body">
-              <h1>Is this a question?</h1>
-              <br>
-              <h3>Yes it is</h3>
-              <h3>No it isnt</h3>
-              <h3>It might be</h3>
+              <h3> <span id="aOne"></span></h3>
+              <h3> <span id="aTwo"></span></h3>
+              <h3> <span id="aThree"></span></h3>
+              <h3> <span id="aFour"></span></h3>
+              <h3> <span id="answer"></span></h3>
+              <button>Start</button>
             </div>
           </div>
         </div>
