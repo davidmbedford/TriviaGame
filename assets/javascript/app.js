@@ -39,7 +39,7 @@ var timerRunning = false; // we will need this to activate the slideshow after w
 
 //This object contains all possible questions, answers... or, soon it will
 function imagePlacer() {
-  $("div#dogpic").append("<img" + " src='assets/images/BerneseMountainDog.jpg' " + "id='dogPic'" + "></img>");
+  $("div#dogpic").append("<img" + allQuestions[0].image + "id='dogPic'" + "></img>");
 };
 
 var allQuestions = [
@@ -49,6 +49,7 @@ var allQuestions = [
     aThree: "Portugese Water Dog",
     aFour: "Bernese Mountain Dog",
     answer: "Bernese Mountain Dog",
+    image: " src='assets/images/BerneseMountainDog.jpg' "
     //key(image): pair(this needs to be the insertion of a string which is 'ready' use, as a variable)
   },
 
@@ -128,7 +129,7 @@ var allQuestions = [
 //Most of the important variables and their "assignment"-functions to html are above.
 //Below are the functions-etc that I need to have the questions/timers run
 
-console.log(allQuestions[0].aOne, allQuestions[1].aOne);
+console.log(allQuestions[0].aOne, allQuestions[1].aOne, allQuestions[0].image);
 
 function start() {
   if (!timerRunning) {
