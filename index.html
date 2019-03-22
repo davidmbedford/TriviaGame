@@ -19,40 +19,44 @@
 
     <div class="row">
 
-      <div class="col-lg-2" >
+      <div class="col-lg-2">
         <div class="card">
           <h3 class="card-header">Stats</h3>
-            <div class="card-body" id="statBody">
-              <p>Correct: <span id="correctStat"></span></p>
-              <p>Wrong: <span id="wrongStat"></span></p>
-              <p>Final Score: <span id="scoreStat"></span></p>
-            </div>
+          <div class="card-body" id="statBody">
+            <p>Correct: <span id="correctStat"></span></p>
+            <p>Wrong: <span id="wrongStat"></span></p>
+            <p>Final Score: <span id="scoreStat"></span></p>
           </div>
         </div>
+        <!---->
+        <div class="card">
+          <h5 class="card-header">Timer: <span id="timer"></span></h5>
+        </div>
+      </div>
 
       <div class="col-lg-6">
         <div class="card" id="quesBody">
           <h3 class="card-header">What's the name of this breed?</h3>
-            <div class="card-body">
-              <h5> <span id="aOne"></span></h5>
-              <h5> <span id="aTwo"></span></h5>
-              <h5> <span id="aThree"></span></h5>
-              <h5> <span id="aFour"></span></h5>
-              <button>Start</button>
-            </div>
+          <div class="card-body main-card">
+            <h5> <span id="aOne"></span></h5>
+            <h5> <span id="aTwo"></span></h5>
+            <h5> <span id="aThree"></span></h5>
+            <h5> <span id="aFour"></span></h5>
           </div>
         </div>
+      </div>
 
       <div class="col-lg-4">
         <div class="card">
           <h3 class="card-header">(card for dog pic)</h3>
-            <div class="card-body" id="dogpic">
-              <h5><span id="answer"></span></h5>
-            </div>
+          <div class="card-body" id="dogpic">
+            <h5><span id="answer"></span></h5>
           </div>
         </div>
+      </div>
 
     </div>
+
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

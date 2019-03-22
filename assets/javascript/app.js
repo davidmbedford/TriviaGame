@@ -16,25 +16,25 @@
 ///////incorrect answers, and an option to restart the game
 ///////(without reloading the page).
 /////// first and last slide will contain a start and a restart button
+$(document).ready(function() {
 
-window.onload = function() {
-  $("#correctStat").text(correct);
-  $("#wrongStat").text(wrong);
-  $("#scoreStat").text(score);
-};
-
+  //opening stats//
 var correct = 0;
 var wrong = 0;
 var score = "";
 
-var count = 0; //we will need this to track the number of questions so that when
-              // count = total, we can trigger the endcard.
+$("#correctStat").text(correct);
+$("#wrongStat").text(wrong);
+$("#scoreStat").text(score);
+
+$(".main-card").append("<button " + " id='startBtn'>" + "Start!" + "</button>");
+
+var count = 0; //we will need this to track the number of questions
 
 var timerRunning = false; // we will need this to activate the slideshow after we hit start
 
 //This object contains all possible questions, answers... or, soon it will
 var imagePlacer = $("div#dogpic").append("<img" + " src='assets/images/BerneseMountainDog.jpg' " + "id='dogPic'" + "></img>");
-imagePlacer;
 
 
 var allQuestions = [
@@ -44,6 +44,7 @@ var allQuestions = [
     aThree: "Portugese Water Dog",
     aFour: "Bernese Mountain Dog",
     answer: "Bernese Mountain Dog",
+    //key(image): pair(this needs to be the insertion of a string which is 'ready' use, as a variable)
   },
 
   questionTwo = {
@@ -119,11 +120,13 @@ var allQuestions = [
   },
 ];
 
-//Most important variables and their "assignment"-functions to html are above.
+//Most of the important variables and their "assignment"-functions to html are above.
 //Below are the functions-etc that I need to have the questions/timers run
 
 console.log(allQuestions[0].aOne, allQuestions[1].aOne);
 
+function start() {
+  timerRunning = true;
 
 $("#aOne").text(allQuestions[0].aOne);
 
@@ -136,3 +139,10 @@ $("#aFour").text(allQuestions[0].aFour);
 $("#answer").text("Answer: " + allQuestions[0].answer);
 
 $("#dogPic").append(allQuestions[0].image);
+
+};
+
+$(document).on("click", "#startBtn", start);
+// $("#startBtn").on("click", start());
+
+});
