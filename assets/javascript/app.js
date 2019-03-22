@@ -30,7 +30,7 @@ $("#scoreStat").text(score);
 $(".main-card").append("<button " + " id='startBtn'>" + "Start!" + "</button>");
 
 var time = 0;
-var count = 0; //we will need this to track the number of questions
+var slideCount = 0; //we will need this to track the number of questions
 var intervalId;
 
 $("#timer").text("00:00");
@@ -44,17 +44,16 @@ function imagePlacer() {
 
 var allQuestions = [
   questionOne = {
-    aOne: "Labroder Retreiver",
+    aOne: "Labrador Retreiver",
     aTwo: "Poodle",
     aThree: "Portugese Water Dog",
     aFour: "Bernese Mountain Dog",
     answer: "Bernese Mountain Dog",
     image: " src='assets/images/BerneseMountainDog.jpg' "
-    //key(image): pair(this needs to be the insertion of a string which is 'ready' use, as a variable)
   },
 
   questionTwo = {
-    aOne: "Labroder Retreive",
+    aOne: "a",
     aTwo: "Poodl",
     aThree: "Portugese Water Do",
     aFour: "Daschun",
@@ -131,17 +130,20 @@ var allQuestions = [
 
 console.log(allQuestions[0].aOne, allQuestions[1].aOne, allQuestions[0].image);
 
+function runGame() {
+
+};
+
 function start() {
   if (!timerRunning) {
   timerRunning = true;
-  intervalId = setInterval(count, 2000);
+  intervalId = setInterval(count, 1000);
 
   $("#aOne").text(allQuestions[0].aOne);
   $("#aTwo").text(allQuestions[0].aTwo);
   $("#aThree").text(allQuestions[0].aThree);
   $("#aFour").text(allQuestions[0].aFour);
   $("#answer").text("Answer: " + allQuestions[0].answer);
-  $("#dogPic").append(allQuestions[0].image);
 
   imagePlacer();
   };
@@ -150,7 +152,10 @@ function start() {
 
 $(document).on("click", "#startBtn", start);
 
-
+function stop() {
+  clearInterval(intervalId);
+  clockRunning = false;
+};
 
 function count() {
 
