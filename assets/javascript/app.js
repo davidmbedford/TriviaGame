@@ -29,7 +29,11 @@ $("#scoreStat").text(score);
 
 $(".main-card").append("<button " + " id='startBtn'>" + "Start!" + "</button>");
 
+var time = 0;
 var count = 0; //we will need this to track the number of questions
+var intervalId;
+
+$("#timer").text("00:00")
 
 var timerRunning = false; // we will need this to activate the slideshow after we hit start
 
@@ -126,23 +130,55 @@ var allQuestions = [
 console.log(allQuestions[0].aOne, allQuestions[1].aOne);
 
 function start() {
+  if (!timerRunning) {
   timerRunning = true;
+  intervalId = setInterval(count, 2000);
 
-$("#aOne").text(allQuestions[0].aOne);
+  $("#aOne").text(allQuestions[0].aOne);
+  $("#aTwo").text(allQuestions[0].aTwo);
+  $("#aThree").text(allQuestions[0].aThree);
+  $("#aFour").text(allQuestions[0].aFour);
+  $("#answer").text("Answer: " + allQuestions[0].answer);
+  $("#dogPic").append(allQuestions[0].image);
+  };
 
-$("#aTwo").text(allQuestions[0].aTwo);
-
-$("#aThree").text(allQuestions[0].aThree);
-
-$("#aFour").text(allQuestions[0].aFour);
-
-$("#answer").text("Answer: " + allQuestions[0].answer);
-
-$("#dogPic").append(allQuestions[0].image);
-
-};
+}
 
 $(document).on("click", "#startBtn", start);
-// $("#startBtn").on("click", start());
+
+
+
+function count() {
+
+  // DONE: increment time by 1, remember we cant use "this" here.
+  time++;
+
+  // DONE: Get the current time, pass that into the timeConverter function,
+  //       and save the result in a variable.
+  var converted = timeConverter(time);
+  console.log(converted);
+
+  // DONE: Use the variable we just created to show the converted time in the "display" div.
+  $("#timer").text(converted);
+}
+
+function timeConverter(t) {
+
+  var minutes = Math.floor(t / 60);
+  var seconds = t - (minutes * 60);
+
+  if (seconds < 10) {
+    seconds = "0" + seconds;
+  }
+
+  if (minutes === 0) {
+    minutes = "00";
+  }
+  else if (minutes < 10) {
+    minutes = "0" + minutes;
+  }
+
+  return minutes + ":" + seconds;
+}
 
 });
