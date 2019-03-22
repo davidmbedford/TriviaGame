@@ -33,13 +33,14 @@ var time = 0;
 var count = 0; //we will need this to track the number of questions
 var intervalId;
 
-$("#timer").text("00:00")
+$("#timer").text("00:00");
 
 var timerRunning = false; // we will need this to activate the slideshow after we hit start
 
 //This object contains all possible questions, answers... or, soon it will
-var imagePlacer = $("div#dogpic").append("<img" + " src='assets/images/BerneseMountainDog.jpg' " + "id='dogPic'" + "></img>");
-
+function imagePlacer() {
+  $("div#dogpic").append("<img" + " src='assets/images/BerneseMountainDog.jpg' " + "id='dogPic'" + "></img>");
+};
 
 var allQuestions = [
   questionOne = {
@@ -140,9 +141,11 @@ function start() {
   $("#aFour").text(allQuestions[0].aFour);
   $("#answer").text("Answer: " + allQuestions[0].answer);
   $("#dogPic").append(allQuestions[0].image);
+
+  imagePlacer();
   };
 
-}
+};
 
 $(document).on("click", "#startBtn", start);
 
