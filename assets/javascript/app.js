@@ -128,74 +128,70 @@ if (!timerRunning) {
   $(".main-card").append("<button id='startBtn'>" + "Start!" + "</button>");
 }
 
-function imagePlacer() {
-  $("div#dogpic").append("<img" + allQuestions[slideCount].image + "id='dogPic'" + "></img>");
-};
+//function imagePlacer() {
+//  $("div#dogpic").append("<img" + allQuestions[slideCount].image + "id='dogPic'" + "></img>");
+//};
 
 
 //Most of the important variables and their "assignment"-functions to html are above.
 //Below are the functions-etc that I need to have the questions/timers run
 
-function start() {
-  timerRunning = true;
-  imagePlacer();
+function setSlides() {
 
   $("#aOne").text(allQuestions[slideCount].aOne);
   $("#aTwo").text(allQuestions[slideCount].aTwo);
   $("#aThree").text(allQuestions[slideCount].aThree);
   $("#aFour").text(allQuestions[slideCount].aFour);
-  //$("#answer").text("Answer: " + allQuestions[slideCount].answer);
+  $("#answer").text("Answer: " + allQuestions[slideCount].answer);
+  $("div#dogpic").append("<img" + allQuestions[slideCount].image + "id='dogPic'></img>");
   console.log(time);
-  if (time === 3) {
-    stop();
-    slideCount++;
-    intervalId = setInterval(count, 1000);
-  }
+  slideCount++;
+  console.log("count", slideCount);
+  };
 
+
+function begin() {
+  setSlides();
+  timerRunning = true;
+  var slideDuration = setInterval(setSlides, 3000);
+  intervalId = setInterval(count, 1000);
+
+  function count() {
+
+    time++;
+
+    var converted = timeConverter(time);
+    console.log(converted);
+
+    $("#timer").text(converted);
+
+  };
+
+  function timeConverter(t) {
+
+    var minutes = Math.floor(t / 60);
+    var seconds = t - (minutes * 60);
+
+    if (seconds < 10) {
+      seconds = "0" + seconds;
+    }
+
+    if (minutes === 0) {
+      minutes = "00";
+    }
+    else if (minutes < 10) {
+      minutes = "0" + minutes;
+    }
+
+    return minutes + ":" + seconds;
+  }
 };
 
 $(document).on("click", "#startBtn", begin);
-
-function begin() {
-  var slideDuration = setInterval(start, 3000);
-  intervalId = setInterval(count, 1000);
-  start();
-  slideCount++;
-};
-
 
 function stop() {
   clearInterval(intervalId);
   timerRunning = false;
 };
-
-function count() {
-
-  time++;
-
-  var converted = timeConverter(time);
-  console.log(converted);
-
-  $("#timer").text(converted);
-}
-
-function timeConverter(t) {
-
-  var minutes = Math.floor(t / 60);
-  var seconds = t - (minutes * 60);
-
-  if (seconds < 10) {
-    seconds = "0" + seconds;
-  }
-
-  if (minutes === 0) {
-    minutes = "00";
-  }
-  else if (minutes < 10) {
-    minutes = "0" + minutes;
-  }
-
-  return minutes + ":" + seconds;
-}
 
 });
