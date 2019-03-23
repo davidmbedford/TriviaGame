@@ -139,16 +139,18 @@ function imagePlacer() {
 function start() {
   intervalId = setInterval(count, 1000);
   timerRunning = true;
+  imagePlacer();
+
+  $("#aOne").text(allQuestions[0].aOne);
+$("#aTwo").text(allQuestions[0].aTwo);
+$("#aThree").text(allQuestions[0].aThree);
+$("#aFour").text(allQuestions[0].aFour);
+//$("#answer").text("Answer: " + allQuestions[0].answer);
+
 };
 
 $(document).on("click", "#startBtn", start);
 
-$("#aOne").text(allQuestions[0].aOne);
-$("#aTwo").text(allQuestions[0].aTwo);
-$("#aThree").text(allQuestions[0].aThree);
-$("#aFour").text(allQuestions[0].aFour);
-$("#answer").text("Answer: " + allQuestions[0].answer);
-imagePlacer();
 
 
 
@@ -159,15 +161,11 @@ function stop() {
 
 function count() {
 
-  // DONE: increment time by 1, remember we cant use "this" here.
   time++;
 
-  // DONE: Get the current time, pass that into the timeConverter function,
-  //       and save the result in a variable.
   var converted = timeConverter(time);
   console.log(converted);
 
-  // DONE: Use the variable we just created to show the converted time in the "display" div.
   $("#timer").text(converted);
 }
 
