@@ -129,7 +129,7 @@ if (!timerRunning) {
 }
 
 function imagePlacer() {
-  $("div#dogpic").append("<img" + allQuestions[0].image + "id='dogPic'" + "></img>");
+  $("div#dogpic").append("<img" + allQuestions[slideCount].image + "id='dogPic'" + "></img>");
 };
 
 
@@ -137,21 +137,31 @@ function imagePlacer() {
 //Below are the functions-etc that I need to have the questions/timers run
 
 function start() {
-  intervalId = setInterval(count, 1000);
   timerRunning = true;
   imagePlacer();
 
-  $("#aOne").text(allQuestions[0].aOne);
-$("#aTwo").text(allQuestions[0].aTwo);
-$("#aThree").text(allQuestions[0].aThree);
-$("#aFour").text(allQuestions[0].aFour);
-//$("#answer").text("Answer: " + allQuestions[0].answer);
+  $("#aOne").text(allQuestions[slideCount].aOne);
+  $("#aTwo").text(allQuestions[slideCount].aTwo);
+  $("#aThree").text(allQuestions[slideCount].aThree);
+  $("#aFour").text(allQuestions[slideCount].aFour);
+  //$("#answer").text("Answer: " + allQuestions[slideCount].answer);
+  console.log(time);
+  if (time === 3) {
+    stop();
+    slideCount++;
+    intervalId = setInterval(count, 1000);
+  }
 
 };
 
-$(document).on("click", "#startBtn", start);
+$(document).on("click", "#startBtn", begin);
 
-
+function begin() {
+  var slideDuration = setInterval(start, 3000);
+  intervalId = setInterval(count, 1000);
+  start();
+  slideCount++;
+};
 
 
 function stop() {
