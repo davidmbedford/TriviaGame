@@ -22,139 +22,139 @@ $(document).ready(function() {
 var correct = 0;
 var wrong = 0;
 var score = "";
-
-$("#correctStat").text(correct);
-$("#wrongStat").text(wrong);
-$("#scoreStat").text(score);
-
-$(".main-card").append("<button " + " id='startBtn'>" + "Start!" + "</button>");
-
+var timerRunning = false; // we will need this to activate the slideshow after we hit start
 var time = 0;
 var slideCount = 0; //we will need this to track the number of questions
 var intervalId;
-
-$("#timer").text("00:00");
-
-var timerRunning = false; // we will need this to activate the slideshow after we hit start
-
-//This object contains all possible questions, answers... or, soon it will
-function imagePlacer() {
-  $("div#dogpic").append("<img" + allQuestions[0].image + "id='dogPic'" + "></img>");
-};
 
 var allQuestions = [
   questionOne = {
     aOne: "Labrador Retreiver",
     aTwo: "Poodle",
-    aThree: "Portugese Water Dog",
+    aThree: "Portuguese Water Dog",
     aFour: "Bernese Mountain Dog",
     answer: "Bernese Mountain Dog",
     image: " src='assets/images/BerneseMountainDog.jpg' "
-  },
+    },
 
   questionTwo = {
-    aOne: "a",
-    aTwo: "Poodl",
-    aThree: "Portugese Water Do",
-    aFour: "Daschun",
-    answer: "Portugese Water Do"
-  },
+    aOne: "Saluki",
+    aTwo: "French Bulldog",
+    aThree: "Irish Wolfhound",
+    aFour: "Corgi",
+    answer: "French Bulldog",
+    image: " src='assets/images/FrenchBulldog.jpg' "
+    },
 
   questionThree = {
-    aOne: "Labroder Retreiv",
-    aTwo: "Pood",
-    aThree: "Portugese Water D",
-    aFour: "Daschu",
-    answer: "Portugese Water D"
-  },
+    aOne: "Dachshund",
+    aTwo: "Chihuahua",
+    aThree: "Bulldog",
+    aFour: "Pug",
+    answer: "Dachshund",
+    image: " src='assets/images/Dachshund.jpg' ",
+    },
 
   questionFour = {
-    aOne: "Labroder Retrei",
-    aTwo: "Poo",
-    aThree: "Portugese Water ",
-    aFour: "Dasch",
-    answer: "Portugese Water "
-  },
+    aOne: "English Mastiff",
+    aTwo: "Greyhound",
+    aThree: "Old English Sheep Dog",
+    aFour: "Portuguese Water Dog",
+    answer: "Portuguese Water Dog",
+    image: " src='assets/images/PortugueseWaterDog.jpg' ",
+    },
 
   questionFive = {
-    aOne: "Labroder Retre",
-    aTwo: "Po",
-    aThree: "Portugese Water",
-    aFour: "Dasc",
-    answer: "Portugese Water"
-  },
+    aOne: "German Shepherd",
+    aTwo: "Golden Retriever",
+    aThree: "Boxer",
+    aFour: "Bulldog",
+    answer: "Boxer",
+    image: " src='assets/images/Boxer.jpg' ",
+    },
 
   questionSix = {
-    aOne: "Labroder Retr",
-    aTwo: "P",
-    aThree: "Portugese Wate",
-    aFour: "Das",
-    answer: "Portugese Wate"
-  },
+    aOne: "Pomeranian",
+    aTwo: "Poodle",
+    aThree: "Bichon Frise",
+    aFour: "Akita",
+    answer: "Bichon Frise",
+    image: " src='assets/images/BichonFrise.jpg' ",
+    },
 
   questionSeven = {
-    aOne: "Laoder Retreir",
-    aTwo: "Poodle",
-    aThree: "rtugese Water g",
-    aFour: "Daschund",
-    answer: "rtugese Water Dog"
-  },
+    aOne: "Siberian Husky",
+    aTwo: "Maltese",
+    aThree: "Pug",
+    aFour: "Beagle",
+    answer: "Beagle",
+    image: " src='assets/images/Beagle.jpg' ",
+    },
 
   questionEight = {
-    aOne: "Labrodtreiver",
-    aTwo: "Poodle",
-    aThree: "Port Water Dog",
-    aFour: "Daschund",
-    answer: "Port Water Dog"
+    aOne: "Airedale Terrier",
+    aTwo: "American Eskimo Dog",
+    aThree: "Basenji",
+    aFour: "Chow Chow",
+    answer: "American Eskimo Dog",
+    image: " src='assets/images/ChowChow.jpg' ",
   },
 
   questionNine = {
-    aOne: "Labror",
-    aTwo: "Poodle",
-    aThree: "Por Dog",
-    aFour: "Daschund",
-    answer: "Por Dog"
-  },
+    aOne: "Irish Setter",
+    aTwo: "Basset Hound",
+    aThree: "Beagle",
+    aFour: "Dachshund",
+    answer: "Basset Hound",
+    image: " src='assets/images/BassetHound.jpg' ",
+    },
 
   questionTen = {
-    aOne: "Labroder Retreiver",
-    aTwo: "Poodle",
-    aThree: "Pougese Water Dog",
-    aFour: "DaschundPortu",
-    answer: "Darv"
-  },
-];
+    aOne: "Akita",
+    aTwo: "Borzoi",
+    aThree: "Saluki",
+    aFour: "Papillon",
+    answer: "Akita",
+    image: " src='assets/images/Akita.jpg' ",
+    },
+  ];
+
+$("#correctStat").text(correct);
+$("#wrongStat").text(wrong);
+$("#scoreStat").text(score);
+$("#timer").text("00:00");
+
+if (!timerRunning) {
+  $(".main-card").append("<button id='startBtn'>" + "Start!" + "</button>");
+}
+
+function imagePlacer() {
+  $("div#dogpic").append("<img" + allQuestions[0].image + "id='dogPic'" + "></img>");
+};
+
 
 //Most of the important variables and their "assignment"-functions to html are above.
 //Below are the functions-etc that I need to have the questions/timers run
 
-console.log(allQuestions[0].aOne, allQuestions[1].aOne, allQuestions[0].image);
-
-function runGame() {
-
-};
-
 function start() {
-  if (!timerRunning) {
-  timerRunning = true;
   intervalId = setInterval(count, 1000);
-
-  $("#aOne").text(allQuestions[0].aOne);
-  $("#aTwo").text(allQuestions[0].aTwo);
-  $("#aThree").text(allQuestions[0].aThree);
-  $("#aFour").text(allQuestions[0].aFour);
-  $("#answer").text("Answer: " + allQuestions[0].answer);
-
-  imagePlacer();
-  };
-
+  timerRunning = true;
 };
 
 $(document).on("click", "#startBtn", start);
 
+$("#aOne").text(allQuestions[0].aOne);
+$("#aTwo").text(allQuestions[0].aTwo);
+$("#aThree").text(allQuestions[0].aThree);
+$("#aFour").text(allQuestions[0].aFour);
+$("#answer").text("Answer: " + allQuestions[0].answer);
+imagePlacer();
+
+
+
 function stop() {
   clearInterval(intervalId);
-  clockRunning = false;
+  timerRunning = false;
 };
 
 function count() {
