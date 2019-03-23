@@ -34,7 +34,7 @@ var allQuestions = [
     aThree: "Portuguese Water Dog",
     aFour: "Bernese Mountain Dog",
     answer: "Bernese Mountain Dog",
-    image: " src='assets/images/BerneseMountainDog.jpg' "
+    image: "assets/images/BerneseMountainDog.jpg",
     },
 
   questionTwo = {
@@ -43,7 +43,7 @@ var allQuestions = [
     aThree: "Irish Wolfhound",
     aFour: "Corgi",
     answer: "French Bulldog",
-    image: " src='assets/images/FrenchBulldog.jpg' "
+    image: "assets/images/FrenchBulldog.jpg",
     },
 
   questionThree = {
@@ -52,7 +52,7 @@ var allQuestions = [
     aThree: "Bulldog",
     aFour: "Pug",
     answer: "Dachshund",
-    image: " src='assets/images/Dachshund.jpg' ",
+    image: "assets/images/Dachshund.jpg",
     },
 
   questionFour = {
@@ -61,7 +61,7 @@ var allQuestions = [
     aThree: "Old English Sheep Dog",
     aFour: "Portuguese Water Dog",
     answer: "Portuguese Water Dog",
-    image: " src='assets/images/PortugueseWaterDog.jpg' ",
+    image: "assets/images/PortugueseWaterDog.jpg",
     },
 
   questionFive = {
@@ -70,7 +70,7 @@ var allQuestions = [
     aThree: "Boxer",
     aFour: "Bulldog",
     answer: "Boxer",
-    image: " src='assets/images/Boxer.jpg' ",
+    image: "assets/images/Boxer.jpg",
     },
 
   questionSix = {
@@ -79,7 +79,7 @@ var allQuestions = [
     aThree: "Bichon Frise",
     aFour: "Akita",
     answer: "Bichon Frise",
-    image: " src='assets/images/BichonFrise.jpg' ",
+    image: "assets/images/BichonFrise.jpg",
     },
 
   questionSeven = {
@@ -88,7 +88,7 @@ var allQuestions = [
     aThree: "Pug",
     aFour: "Beagle",
     answer: "Beagle",
-    image: " src='assets/images/Beagle.jpg' ",
+    image: "assets/images/Beagle.jpg",
     },
 
   questionEight = {
@@ -97,7 +97,7 @@ var allQuestions = [
     aThree: "Basenji",
     aFour: "Chow Chow",
     answer: "American Eskimo Dog",
-    image: " src='assets/images/ChowChow.jpg' ",
+    image: "assets/images/ChowChow.jpg",
   },
 
   questionNine = {
@@ -106,7 +106,7 @@ var allQuestions = [
     aThree: "Beagle",
     aFour: "Dachshund",
     answer: "Basset Hound",
-    image: " src='assets/images/BassetHound.jpg' ",
+    image: "assets/images/BassetHound.jpg",
     },
 
   questionTen = {
@@ -115,7 +115,7 @@ var allQuestions = [
     aThree: "Saluki",
     aFour: "Papillon",
     answer: "Akita",
-    image: " src='assets/images/Akita.jpg' ",
+    image: "assets/images/Akita.jpg",
     },
   ];
 
@@ -137,17 +137,30 @@ if (!timerRunning) {
 //Below are the functions-etc that I need to have the questions/timers run
 
 function setSlides() {
-
+  //one
   $("#aOne").text(allQuestions[slideCount].aOne);
+  $("#aOne").attr("data-value", allQuestions[slideCount].aOne);
+  //two
   $("#aTwo").text(allQuestions[slideCount].aTwo);
+  $("#aTwo").attr("data-value", allQuestions[slideCount].aTwo);
+  //three
   $("#aThree").text(allQuestions[slideCount].aThree);
+  $("#aThree").attr("data-value", allQuestions[slideCount].aThree);
+  //four
   $("#aFour").text(allQuestions[slideCount].aFour);
+  $("#aFour").attr("data-value", allQuestions[slideCount].aFour);
+  //answer
   $("#answer").text("Answer: " + allQuestions[slideCount].answer);
-  $("div#dogpic").append("<img" + allQuestions[slideCount].image + "id='dogPic'></img>");
+  $("#answer").attr("data-value", allQuestions[slideCount].aOne);
+  //image
+  $("#dogPic").attr("src", allQuestions[slideCount].image);
+
   console.log(time);
   slideCount++;
   console.log("count", slideCount);
+
   };
+
 
 
 function begin() {
@@ -156,12 +169,18 @@ function begin() {
   var slideDuration = setInterval(setSlides, 3000);
   intervalId = setInterval(count, 1000);
 
+  $(".answerOption").on("click", function() {
+    var userGuess = $(this).attr()
+
+  })
+
+
   function count() {
 
     time++;
 
     var converted = timeConverter(time);
-    console.log(converted);
+    //console.log(converted);
 
     $("#timer").text(converted);
 
@@ -186,7 +205,6 @@ function begin() {
     return minutes + ":" + seconds;
   }
 };
-
 $(document).on("click", "#startBtn", begin);
 
 function stop() {
