@@ -178,7 +178,7 @@ function begin() {
       $("#correctStat").text(correct);
 
     }
-    else {
+    else if (userGuess != realAnswer) {
       wrong++;
       $("#wrongStat").text(wrong);
     }
