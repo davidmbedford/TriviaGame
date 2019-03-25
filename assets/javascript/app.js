@@ -166,16 +166,21 @@ function begin() {
   intervalId = setInterval(count, 1000);
 
 
-  $("h5").on("click", function() {
-    var userGuess = $(this.span).data("data-value");
+  $(".clicker").on("click", function() {
+    var userGuess = $(this).attr("data-value");
     console.log(userGuess);
     var realAnswer = allQuestions[slideCount-1].answer;
     console.log(realAnswer);
+    console.log(correct);
+    console.log(wrong);
     if (userGuess === realAnswer) {
-      correct+1;
+      correct++;
+      $("#correctStat").text(correct);
+
     }
     else {
-      wrong+1;
+      wrong++;
+      $("#wrongStat").text(wrong);
     }
   });
 
