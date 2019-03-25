@@ -2,6 +2,10 @@
   width: 300px;
 }
 
+.hovered {
+  border-style: dotted;
+}
+
 /* #containerCSS {
   background-image: url("../images/background.jpg");
 }

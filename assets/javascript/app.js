@@ -1,4 +1,4 @@
-// Trivia game
+//// Trivia game
 // A list of features I need to design
 ////shows one question until:
 /////////the player answers it
@@ -24,7 +24,7 @@ var wrong = 0;
 var score = "";
 var timerRunning = false; // we will need this to activate the slideshow after we hit start
 var time = 0;
-var slideCount = 0; //we will need this to track the number of questions
+var slideCount = 0;
 var intervalId;
 
 var allQuestions = [
@@ -128,12 +128,7 @@ if (!timerRunning) {
   $(".main-card").append("<button id='startBtn'>" + "Start!" + "</button>");
 }
 
-//function imagePlacer() {
-//  $("div#dogpic").append("<img" + allQuestions[slideCount].image + "id='dogPic'" + "></img>");
-//};
-
-
-//Most of the important variables and their "assignment"-functions to html are above.
+//Most of the important variables are above.
 //Below are the functions-etc that I need to have the questions/timers run
 
 function setSlides() {
@@ -155,7 +150,8 @@ function setSlides() {
   //image
   $("#dogPic").attr("src", allQuestions[slideCount].image);
 
-  console.log(time);
+  console.log("time", time);
+  console.log("correct", correct);
   slideCount++;
   console.log("count", slideCount);
 
@@ -166,13 +162,25 @@ function setSlides() {
 function begin() {
   setSlides();
   timerRunning = true;
-  var slideDuration = setInterval(setSlides, 3000);
+  var slideDuration = setInterval(setSlides, 5000);
   intervalId = setInterval(count, 1000);
 
-  $(".answerOption").on("click", function() {
-    var userGuess = $(this).attr()
 
-  })
+  $("h5").on("click", function() {
+    var userGuess = $(this.span).data("data-value");
+    console.log(userGuess);
+    var realAnswer = allQuestions[slideCount-1].answer;
+    console.log(realAnswer);
+    if (userGuess === realAnswer) {
+      correct+1;
+    }
+    else {
+      wrong+1;
+    }
+  });
+
+  };
+
 
 
   function count() {
@@ -204,12 +212,18 @@ function begin() {
 
     return minutes + ":" + seconds;
   }
-};
-$(document).on("click", "#startBtn", begin);
 
 function stop() {
   clearInterval(intervalId);
   timerRunning = false;
 };
+
+$(document).on("click", "#startBtn", begin);
+$("h5").hover(
+  function () {
+    $(this).css("border-style", "solid");
+  }, function() {
+    $( this ).css("border-style", "none");
+  });
 
 });
