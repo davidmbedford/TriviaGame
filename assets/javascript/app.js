@@ -96,7 +96,7 @@ var allQuestions = [
     aTwo: "American Eskimo Dog",
     aThree: "Basenji",
     aFour: "Chow Chow",
-    answer: "American Eskimo Dog",
+    answer: "Chow Chow",
     image: "assets/images/ChowChow.jpg",
   },
 
@@ -145,7 +145,7 @@ function setSlides() {
   $("#aFour").text(allQuestions[slideCount].aFour);
   $("#aFour").attr("data-value", allQuestions[slideCount].aFour);
   //answer
-  $("#answer").text("Answer: " + allQuestions[slideCount].answer);
+  //$("#answer").text("Answer: " + allQuestions[slideCount].answer);
   $("#answer").attr("data-value", allQuestions[slideCount].aOne);
   //image
   $("#dogPic").attr("src", allQuestions[slideCount].image);
